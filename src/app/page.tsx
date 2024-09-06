@@ -1,6 +1,8 @@
 // import Link from "next/link";
 // import Image from "next/image";
 
+import { db } from "~/server/db";
+
 
 const mockUrls = [
   "https://utfs.io/f/d9dc58cb-df28-414d-a616-b90e80f85d05-n5ho2k.png",
@@ -14,13 +16,22 @@ const mockImages = mockUrls.map((url, index) => ({
   url,
 }));
 
-export default function HomePage() {
+// This is a server component, and it ONLY runs on the server, not the client
+export default async function HomePage() {
+  
+  const posts = await db.query.posts.findMany();
+
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
+        {posts.map((post) => (
+          <div key={post.id} className="w-96 p-4 text-center flex flex-col items-center justify-center">
+            {post.name}
+          </div>
+        ))}
         {
-          [...mockImages, ...mockImages, ...mockImages, ...mockImages].map((image) => (
-            <div key={image.id}>
+          [...mockImages, ...mockImages, ...mockImages, ...mockImages].map((image, index) => (
+            <div key={image.id + '-' + index}>
               <img src={image.url} alt={`Image ${image.id}`} className="w-96 p-4" />
             </div>
           ))
