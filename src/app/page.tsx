@@ -1,5 +1,5 @@
 // import Link from "next/link";
-// import Image from "next/image";
+import Image from "next/image";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import ClientUploadDropzone from "./_components/clientuploaddropzone";
 import { getMyImages } from "~/server/queries";
@@ -14,8 +14,8 @@ async function Images() {
     <div className="flex flex-wrap gap-4 justify-center">
       {
         images.map((image) => (
-          <div key={image.id} className="flex flex-col justify-center items-center max-w-96">
-            <img src={image.url} alt={`${image.name}`} className="w-96" />
+          <div key={image.id} className="flex flex-col justify-center items-center w-96 h-96">
+            <Image src={image.url} alt={image.name} style={{objectFit: "contain"}} width={384} height={384} />
             <p className="truncate w-full text-center">{image.name}</p>
           </div>
         ))
