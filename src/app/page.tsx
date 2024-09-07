@@ -3,7 +3,7 @@
 
 import { db } from "~/server/db";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { UploadDropzone } from "~/utils/uploadthing";
+import ClientUploadDropzone from "./_components/clientuploaddropzone";
 
 export const dynamic = 'force-dynamic';
 
@@ -16,8 +16,8 @@ async function Images() {
   return (
     <div className="flex flex-wrap gap-4 justify-center">
       {
-        [...images].map((image, index) => (
-          <div key={image.id + '-' + index} className="flex flex-col justify-center items-center max-w-96">
+        images.map((image) => (
+          <div key={image.id} className="flex flex-col justify-center items-center max-w-96">
             <img src={image.url} alt={`${image.name}`} className="w-96" />
             <p className="truncate w-full text-center">{image.name}</p>
           </div>
@@ -39,9 +39,7 @@ export default async function HomePage() {
       
       <SignedIn>
         <div className="flex flex-col justify-center items-center gap-4">
-          <div className="flex flex-col justify-center items-center w-full mx-16 px-16">
-            <UploadDropzone endpoint="imageUploader" className="bg-zinc-800 w-full cursor-pointer ut-button:bg-slate-500 ut-label:text-slate-500" />
-          </div>
+          <ClientUploadDropzone />
           <Images />
         </div>
       </SignedIn>
