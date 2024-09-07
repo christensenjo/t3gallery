@@ -11,7 +11,7 @@ export function TopNav() {
             <h1 className="text-4xl">
                 Gallery
             </h1>
-            <div className="mr-4 border-2 border-white rounded-full flex justify-center items-center">
+            <div className="mr-4">
                 <SignedOut>
                     <SignInButton />
                 </SignedOut>
