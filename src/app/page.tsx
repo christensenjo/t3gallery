@@ -3,6 +3,7 @@
 
 import { db } from "~/server/db";
 
+export const dynamic = 'force-dynamic';
 
 const mockUrls = [
   "https://utfs.io/f/d9dc58cb-df28-414d-a616-b90e80f85d05-n5ho2k.png",
@@ -21,6 +22,7 @@ export default async function HomePage() {
   
   const posts = await db.query.posts.findMany();
 
+  console.log(posts);
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
