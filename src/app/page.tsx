@@ -17,7 +17,7 @@ async function Images() {
         [...images, ...images].map((image) => (
           <div key={image.id} className="flex flex-col justify-center items-center w-96 h-96">
             <Link href={`/img/${image.id}`}>
-              <Image src={image.url} alt={image.name} style={{objectFit: "contain"}} width={384} height={384} />
+              <Image src={image.url} alt={image.name} style={{objectFit: "contain"}} width={384} height={384} className="rounded-md" />
             </Link>
             <p className="truncate w-full text-center">{image.name}</p>
           </div>

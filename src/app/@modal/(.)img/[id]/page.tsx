@@ -11,7 +11,7 @@ export default function ImageModal({
 
     return (
         <Modal>
-            <FullPageImageView id={idAsNumber} />
+            <FullPageImageView id={idAsNumber} isModal={true} />
         </Modal>
     );
 }
