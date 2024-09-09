@@ -5,6 +5,7 @@ import {
     UserButton
 } from '@clerk/nextjs'
 import Link from 'next/link';
+import { SimpleUploadButton } from './simple-upload-button';
 
 export function TopNav() {
     return (
@@ -12,11 +13,12 @@ export function TopNav() {
             <h1 className="text-4xl">
                 <Link href="/">Gallery</Link>
             </h1>
-            <div className="mr-4">
+            <div className="mr-4 flex gap-6 items-center">
                 <SignedOut>
                     <SignInButton />
                 </SignedOut>
                 <SignedIn>
+                    <SimpleUploadButton />
                     <UserButton />
                 </SignedIn>
             </div>
