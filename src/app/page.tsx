@@ -12,9 +12,9 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="flex flex-wrap gap-4 justify-center">
+    <div className="flex flex-wrap gap-4 justify-center p-4">
       {
-        images.map((image) => (
+        [...images, ...images].map((image) => (
           <div key={image.id} className="flex flex-col justify-center items-center w-96 h-96">
             <Link href={`/img/${image.id}`}>
               <Image src={image.url} alt={image.name} style={{objectFit: "contain"}} width={384} height={384} />
